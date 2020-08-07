@@ -1,4 +1,4 @@
-# Workflow ReactJS
+# Boilerplate ReactJS
 
 ## What's inside it?
 
