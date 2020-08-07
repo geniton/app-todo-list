@@ -1,5 +1,3 @@
-# Workflow ReactJS
-
 ## What's inside it?
 
 * Webpack 3+
@@ -19,8 +17,6 @@
 
 ## Up and running
 
-- Clone this repository: `git clone git@github.com:fdaciuk/workflow-reactjs.git`;
-- Remove `.git` directory;
 - Install dependencies: `yarn` (or `npm i`);
 - Run `yarn dev` (or `npm start`) to develop on `http://localhost:3000`
 - Run `yarn build` (or `npm run build`) for production build (files will be generated on `dist` directory)
@@ -32,8 +28,6 @@ because `spawn` module does not work very well on Windows.
 
 You should install `cross-spawn`, and edit `gulpfile.js`, removing line `4` and
 uncomment line `7`.
-
-A big thanks to [@hgtpcastro](https://github.com/hgtpcastro) for this tip.
 
 ## Scripts
 
