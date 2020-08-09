@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
    return {
       handleSubmit: async (e) => {
          e.preventDefault()
-         dispatch(await fetchAddress(e.target.cep.value))
+         fetchAddress(dispatch,e.target.cep.value)
       }
    }
 }
