@@ -1,6 +1,6 @@
 'use strict'
 
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from 'reducers'
 import thunk from 'redux-thunk'
 
@@ -11,8 +11,9 @@ import thunk from 'redux-thunk'
 //    return next(action)
 //  }
 
-export default () => {
-  const store = createStore(reducer, applyMiddleware(logger,thunk))
+export default ({ initialState} = {}) => {
+  const enhancer = compose(applyMiddleware(thunk), logger())
+  const store = createStore(reducer, initialState, enhancer)
 
    if (module.hot) {
       module.hot.accept('reducers', () => {
@@ -24,12 +25,4 @@ export default () => {
    return store
 }
 
-const logger = ({ dispatch, getState }) => (next) => (action) => {
-   console.group(`LOGGER->${action.type}`)
-   console.log('will dispatch:',action)
-   console.log('state:',getState())
-   const nextAction = next(action)
-   console.log('next state:',getState())
-   console.groupEnd(`LOGGER->${action.type}`)
-   return nextAction
- }
+const logger = () => window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (x) => x
