@@ -1,5 +1,5 @@
 import createReducer from '../create-reducer'
-import { UPDATE_ADDRESS } from './action'
+import { UPDATE_ADDRESS, FETCHING } from './action'
 
 const initialState = {
   address: '',
@@ -11,13 +11,18 @@ const initialState = {
 }
 
 const Address = createReducer(initialState, {
+  [FETCHING]: (state, action) => ({
+    ...state,
+    isFetching: true
+  }),
   [UPDATE_ADDRESS]: (state, action) => ({
     address: action.payload.address,
     city: action.payload.city,
     code: action.payload.code,
     district: action.payload.district,
     state: action.payload.state,
-    status: action.payload.status
+    status: action.payload.status,
+    isFetching: false
   })
 })
 
